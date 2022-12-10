@@ -1,5 +1,15 @@
 # Kubernetes Reference
 
+```
+  _                             _  __     _                          _
+ | |                           | |/ /    | |                        | |
+ | |     ___  __ _ _ __ _ __   | ' /_   _| |__   ___ _ __ _ __   ___| |_ ___  ___
+ | |    / _ \/ _` | '__| '_ \  |  <| | | | '_ \ / _ \ '__| '_ \ / _ \ __/ _ \/ __|
+ | |___|  __/ (_| | |  | | | | | . \ |_| | |_) |  __/ |  | | | |  __/ ||  __/\__ \
+ |______\___|\__,_|_|  |_| |_| |_|\_\__,_|_.__/ \___|_|  |_| |_|\___|\__\___||___/
+
+```
+
 ## Description
 A collection of useful docs for working with Kubernetes.
 
@@ -16,6 +26,19 @@ A collection of useful docs for working with Kubernetes.
 |---|---|
 | `kubeadm` | CLI tool that simplifies creation and management of Kubernetes Cluster |
 | `kubectl` | CLI tool for interacting with Kubernetes Cluster
+
+---
+## YAML Manifests
+All Kubernetes YAML Manifest files have the following 4 top-level properties.
+
+```yaml
+apiVersion:
+kind:
+metadata:
+spec:
+```
+
+# `kubectl edit` ...
 
 ---
 ## Cheat Sheet
