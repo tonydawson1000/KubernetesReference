@@ -3,11 +3,43 @@
 ## Description
 ### ["A Deployment provides declarative updates for Pods and ReplicaSets."](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/)
 
+
+## Imperative :(
+Create a Deployment, running an nginx Pod
+
+    kubectl create deployment nginx --image=nginx
+
+Edit Deployment - Used to make 'direct changes to the cluster state'
+
+    kubectl edit deployment hello-world
+
+    - Make changes (`replicas:30`)
+    - Save and Quit
+
+    kubectl get deployment hello-world
+
+or Scale
+
+    kubectl scale deployment hello-world --replicas=15
+
+
+
 ---
+
+## Declaritive :)
+Have kubectl generate (`--dryrun`) a Deplyment Manifest (yaml) file, then apply
+
+    kubectl create deployment mynginx --image=nginx --dry-run=client -o yaml > mynginxdeployment.yaml
+
+    kubectl apply -f mynginxdeployment.yaml
+
+---
+
 ## Deployment Outline
 ![DeploymentOutline](./images/DeploymentOutline.JPG)
 
 ---
+
 ## Sample Deployment Manifest.
 ```yaml
 apiVersion: apps/v1
@@ -36,6 +68,7 @@ spec:
 ```
 
 ---
+
 ## Cheat Sheet
 
 | Command | Description |
@@ -50,7 +83,7 @@ spec:
 | `kubectl get deployment <deploymentname> -o wide` | List detailed info about a Deployment |
 | `kubectl describe deployment <deploymentname>` | List full details about a Deployment |
 | Create Manifest Command | |
-| `kubectl ??? --dry-run=client -o yaml > deploy-myapp.yaml` | Generate a sample Deployment Manifest Definition file  |
+| `kubectl create deployment hello-world --image=gcr.io/google-samples/hello-app:1.0 --dry-run=client -o yaml > deployment.yaml` | Generate a sample Deployment Manifest Definition file  |
 | Apply Manifest | |
 | `kubectl apply -f deploy-myapp.yaml` | Send the Manifest to Kubernetes API |
 | `kubectl apply -f deploy-myapp.yaml --record` | As above - BUT now records the 'Change Cause' (log)|
@@ -58,6 +91,7 @@ spec:
 | `kubectl delete deployment <deploymentname>` | Deletes the Deployment (and all associated ReplicaSet(s) and Pod(s)) |
 
 ---
+
 ## Updates and Rollbacks
 Rollout and Versioning
 | Command | Description |
@@ -70,15 +104,16 @@ Rollout and Versioning
 | Rollout Rollbacks | |
 | `kubectl rollout undo deployment/<deploymentname>` | Rollback to the previous Deployment |
 
-
-
 ---
+
 ## Deployment Strategy
 
 ---
+
 ### Recreate (incurs downtime)
 ![DeploymentStrategyRecreate](./images/DeploymentStrategyRecreate.JPG)
 
 ---
+
 ### Rolling (zero downtime - BUT - the app has to support / handle this!)
 ![DeploymentStrategyRollingUpdate](./images/DeploymentStrategyRollingUpdate.JPG)

@@ -3,7 +3,22 @@
 ## Description
 ### ["Pods are the smallest deployable units of computing that you can create and manage in Kubernetes."](https://kubernetes.io/docs/concepts/workloads/pods/)
 
+## Imperative :(
+Create and run an nginx Pod
+
+    kubectl run nginx --image=nginx
+
 ---
+
+## Declaritive :)
+Have kubectl generate (`--dryrun`) a Pod Manifest (yaml) file, then apply
+
+    kubectl run mynginx --image=nginx --dry-run=client -o yaml > mynginxpod.yaml
+    
+    kubectl apply -f mynginxpod.yaml
+
+---
+
 ## Sample Pod Manifest.
 ```yaml
 apiVersion: v1
@@ -20,6 +35,7 @@ spec:
 ```
 
 ---
+
 ## Cheat Sheet
 
 | Command | Description |

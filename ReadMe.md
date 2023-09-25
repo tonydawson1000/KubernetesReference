@@ -20,6 +20,7 @@ A collection of useful docs for working with Kubernetes.
 | [Deployments](./Deployments/Deployment.md) | "A Deployment provides declarative updates for Pods and ReplicaSets." |
 
 ---
+
 ## Command line tools to interact with Kubernetes.
 
 | Name | Description |
@@ -28,6 +29,7 @@ A collection of useful docs for working with Kubernetes.
 | `kubectl` | CLI tool for interacting with Kubernetes Cluster
 
 ---
+
 ## YAML Manifests
 All Kubernetes YAML Manifest files have the following 4 top-level properties.
 
@@ -38,7 +40,41 @@ metadata:
 spec:
 ```
 
-# `kubectl edit` ...
+---
+
+## Kubernetes Dashboard
+
+Deploy the [Kubernetes Dashboard](https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/)
+
+Configure [Access to the Dashboard](https://github.com/kubernetes/dashboard/blob/master/docs/user/access-control/creating-sample-user.md)
+
+Get a Login Token by running the following
+
+```
+kubectl get secret admin-user -n kubernetes-dashboard -o jsonpath={".data.token"} | base64 -d
+```
+
+## kubectl logs
+#### Used to show the Logs from within the Container/Pod
+```
+kubectl logs <podname>
+```
+
+## kubectl exec
+#### Used to execute a process inside a Container/Pod
+```
+kubectl exec -it <podname> -- <processname>`
+
+e.g.
+
+kubectl exec -it nginx -- /bin/sh
+
+or
+
+kubectl exec --stdin --tty nginx -- /bin/bash
+```
+---
+
 
 ---
 ## Cheat Sheet
