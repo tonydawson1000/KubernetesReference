@@ -16,7 +16,7 @@ spec:
         app: nginx-deployment
     spec:
       containers:
-      - image: quay.io/tonydawson1000/nginxbase:0.1
+      - image: quay.io/tonydawson1000/nginx-base:0.2
         name: nginx-deployment
         resources: {}
 status: {}
