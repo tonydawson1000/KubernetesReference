@@ -2,21 +2,21 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    app: ubi-nginx-deployment
-  name: ubi-nginx-deployment
+    app: ubi8-nginx-deployment
+  name: ubi8-nginx-deployment
 spec:
   replicas: 3
   selector:
     matchLabels:
-      app: ubi-nginx-deployment
+      app: ubi8-nginx-deployment
   strategy: {}
   template:
     metadata:
       labels:
-        app: ubi-nginx-deployment
+        app: ubi8-nginx-deployment
     spec:
       containers:
-      - image: quay.io/tonydawson1000/ubi-nginx-base:0.2
-        name: nginx-deployment
+      - image: quay.io/tonydawson1000/ubi8-nginx-base:0.2
+        name: ubi8-nginx-deployment
         resources: {}
 status: {}
