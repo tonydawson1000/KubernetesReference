@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: ubi-nginx-deployment
+  name: ubi-nginx-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: ubi-nginx-deployment
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        app: ubi-nginx-deployment
+    spec:
+      containers:
+      - image: quay.io/tonydawson1000/ubi-nginx-base:0.2
+        name: nginx-deployment
+        resources: {}
+status: {}
